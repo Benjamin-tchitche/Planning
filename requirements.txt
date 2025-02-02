@@ -1,0 +1,16 @@
+asyncgui==0.6.3
+asynckivy==0.6.4
+certifi==2024.12.14
+charset-normalizer==3.4.1
+docutils==0.21.2
+exceptiongroup==1.2.2
+filetype==1.2.0
+idna==3.10
+Kivy==2.3.1
+Kivy-Garden==0.1.5
+kivymd @ file:///home/bentchitche/OneDrive/dev/doc/vara/planing/KivyMD
+materialyoucolor==2.0.10
+pillow==11.1.0
+Pygments==2.19.1
+requests==2.32.3
+urllib3==2.3.0

@@ -1,0 +1,104 @@
+
+<CommonAssistChip>
+    type: "assist"
+    md_bg_color: "#2a3127"
+    line_color: "grey"
+    elevation: 1
+    shadow_softness: 2
+
+    MDChipLeadingIcon:
+        icon: root.icon
+        theme_text_color: "Custom"
+        text_color: "#68896c"
+
+    MDChipText:
+        text: root.text
+        theme_text_color: "Custom"
+        text_color: "#e6e9df"
+
+<ActivityChip>
+    type: "input"
+    md_bg_color: "#dfdfd4"
+    line_color: "#2b2b2a"
+    elevation: 1
+    shadow_softness: 2
+    _no_ripple_effect: True
+
+    MDChipLeadingIcon:
+        icon: root.icon
+        theme_text_color: "Custom"
+        text_color: "#68896c"
+
+    MDChipTrailingIcon:
+        icon: "close"
+
+    MDChipText:
+        text: root.text
+        theme_text_color: "Custom"
+        text_color: "#0e0e0d"
+
+
+<Contener>
+    orientation: 'horizontal'
+    adaptive_height: True
+    MDBoxLayout:
+        size_hint_x: 0.15
+        RelativeLayout:
+            MDLabel:
+                text: root.startTime
+                pos_hint: {'x': 0.0,'center_y': 0.9}
+    MDCard:
+        padding: "4dp"
+        size_hint: 1, None
+        height: "100dp"
+        style: "elevated"
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: 10
+           
+            MDBoxLayout:
+                id:chiplace
+                orientation: 'vertical'
+            MDBoxLayout:
+                MDLabel:
+                    text:"BU"
+            
+<DatePicker>
+    adaptive_height: True
+    MDTextField:
+        id: date_input
+        mode: "rectangle"
+        hint_text: "Date"
+        text_color_normal: "black"
+        text_color_focus: "black"
+        theme_line_color: "Custom"
+        line_color_normal: "green"
+
+        on_focus: root.select_action(self)
+
+<TimePicker>
+    adaptive_height: True
+    MDTextField:
+        id: time_input
+        mode: "rectangle"
+        hint_text: root.htext
+        text_color_normal: "black"
+        text_color_focus: "black"
+        theme_line_color: "Custom"
+        line_color_normal: "green"
+
+        on_focus: root.select_action(self)
+
+<CustomeDropOptions>
+    adaptive_height: True
+    MDTextField:
+        id: option_input
+        text: "Ne pas répéter"
+        mode: "rectangle"
+        hint_text: root.htext
+        text_color_normal: "black"
+        text_color_focus: "black"
+        theme_line_color: "Custom"
+        line_color_normal: "green"
+
+        on_focus: root.select_action(self)

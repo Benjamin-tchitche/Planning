@@ -1,6 +1,6 @@
 
 from kivy.lang import Builder
-from kivy.properties import StringProperty,ObjectProperty
+from kivy.properties import StringProperty,ObjectProperty, ListProperty, BooleanProperty
 
 from kivymd.uix.chip import MDChip
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -15,15 +15,17 @@ class CommonAssistChip(MDChip):
     text = StringProperty()
     icon = StringProperty()
     
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
 class Contener(MDBoxLayout):
 
     infoText = StringProperty()
-    startTime = StringProperty("10:00")
-    endTime = StringProperty("11:00")
+    startTime = StringProperty("")
+    endTime = StringProperty("")
     taskBloc = ObjectProperty()
+    OnButtonClick = ObjectProperty()
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -36,18 +38,33 @@ class Contener(MDBoxLayout):
                 self.ids['chiplace'].add_widget(self.taskBloc)
         
         self.login = not self.login
+    
+    def onClick(self):
+        if self.OnButtonClick:
+            self.OnButtonClick()
 
 class ActivityChip(MDChip):
     text = StringProperty("Activité")
     icon = StringProperty()
+    destroyed = BooleanProperty(False)
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def close(self):
+        if self.destroyed:
+            self.parent.remove_widget(self)
+    
+        
 class DatePicker(MDBoxLayout):
+    text = StringProperty()
+    htext = StringProperty('Date')
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
+    def get_text(self):
+        return self.ids.date_input.text
+        
     def select_action(self,x):
         if x.focus:
             self.open()
@@ -67,11 +84,15 @@ class DatePicker(MDBoxLayout):
         instance.dismiss()
 
 class TimePicker(MDBoxLayout):
+    text = StringProperty()
     htext = StringProperty('Début')
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
+    def get_text(self,*args):
+        return self.ids.time_input.text
+        
     def select_action(self,x):
         if x.focus:
             self.open()
@@ -91,22 +112,27 @@ class TimePicker(MDBoxLayout):
     
 class CustomeDropOptions(MDBoxLayout):
     htext = StringProperty("Répéter")
+    text = StringProperty("Ne pas répéter")
+    options = ListProperty(["Ne pas répéter","Quotidiennement","Hebdomadaire","Mensuellement","Annuellement"])
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def get_text(self):
+        return self.ids.option_input.text
+        
     def open_options(self, item):
         menu_items = [
             {
                 "text": f"{i}",
                 "on_release": lambda x=f"{i}": self.menu_callback(x),
-            } for i in ["Ne pas répéter","Quotidiennement","Hebdomadaire","Mensuellement","Annuellement"]
-        ]
+            } for i in self.options]
         self.menu = MDDropdownMenu(caller=item, items=menu_items)
         
         self.menu.open()
 
     def menu_callback(self, text_item):
+        self.text = text_item
         self.ids.option_input.text = text_item
         self.menu.dismiss()
         

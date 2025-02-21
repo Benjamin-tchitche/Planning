@@ -1,0 +1,178 @@
+
+
+<Quotidien>
+    adaptive_height: True
+    spacing: 15
+    id: quotidien
+    MDBoxLayout:
+        size_hint_x: None
+        width: dp(30)
+        
+    MDLabel:
+        text: "Chaque"
+        adaptive_width: True
+    CustomTextField:
+        id: freq_day
+        size_hint: None, None
+        width: dp(80)
+        height: dp(20)
+        text: '1'
+        
+    MDLabel:
+        text: "Jours"
+
+
+<Hebdomadaire>
+    id:hebdomadaire
+    adaptive_height: True
+    spacing: 15
+    padding: 5
+    orientation: 'vertical'
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: 10
+        MDBoxLayout:
+            size_hint_x: None
+            width: dp(30)
+            
+        MDLabel:
+            text: "Chaque"
+            adaptive_width: True
+        CustomTextField:
+            id: freq_week
+            size_hint: None, None
+            width: dp(80)
+            height: dp(20)
+            text: '1'
+            
+        MDLabel:
+            text: "Semaine"
+    MDBoxLayout:
+        spacing:10
+        adaptive_height: True
+        MDBoxLayout:
+            size_hint_x: None
+            width: dp(30)
+        MDIconButton:
+            id: l
+            icon: "alpha-l-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 'l')
+            
+        MDIconButton:
+            id: m
+            icon: "alpha-m-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 'm')
+            
+        MDIconButton:
+            id:me
+            icon: "alpha-m-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 'me')
+            
+        MDIconButton:
+            id: j
+            icon: "alpha-j-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 'j')
+            
+        MDIconButton:
+            id:v
+            icon: "alpha-v-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 'v')
+            
+
+        MDIconButton:
+            id: s
+            icon: "alpha-s-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 's')
+            
+        MDIconButton:
+            id: d
+            icon: "alpha-d-circle"
+            style: "tonal"
+            theme_bg_color: "Custom"
+            md_bg_color: "brown"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "48sp"
+            on_press: root.ispressed(self, 'd')
+            
+
+
+<RepeteBlock>
+    orientation: 'vertical'
+    adaptive_height: True
+    spacing: 10
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: 5
+        MDBoxLayout:
+            size_hint_x: None
+            width: dp(30)
+            MDIcon:
+                icon: 'reload'
+                font_size: 20
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        CustomeDropOptions:
+            id: repeter_status
+            on_text: root.check_reload(self)
+        
+    MDBoxLayout:
+        id: dynamic_inputer
+        adaptive_height: True
+    
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: 5
+        MDBoxLayout:
+            size_hint_x: None
+            width: dp(30)
+        
+        CustomeDropOptions:
+            id: repeter_limit
+            htext: "Limite"
+            text: "Sans limite"
+            options: ["Sans limite","Jusqu'à une certaine date"]
+        

@@ -31,6 +31,7 @@
 
     MDChipTrailingIcon:
         icon: "close"
+        on_press: root.close()
 
     MDChipText:
         text: root.text
@@ -52,6 +53,7 @@
         size_hint: 1, None
         height: "100dp"
         style: "elevated"
+        on_press: root.onClick()
         MDBoxLayout:
             orientation: 'vertical'
             spacing: 10
@@ -61,44 +63,30 @@
                 orientation: 'vertical'
             MDBoxLayout:
                 MDLabel:
-                    text:"BU"
+                    text: root.infoText
             
 <DatePicker>
     adaptive_height: True
-    MDTextField:
+    CustomTextField:
         id: date_input
-        mode: "rectangle"
-        hint_text: "Date"
-        text_color_normal: "black"
-        text_color_focus: "black"
-        theme_line_color: "Custom"
-        line_color_normal: "green"
-
+        text: root.text
+        hint_text: root.htext
         on_focus: root.select_action(self)
 
 <TimePicker>
     adaptive_height: True
-    MDTextField:
+    CustomTextField:
         id: time_input
-        mode: "rectangle"
+        text: root.text
         hint_text: root.htext
-        text_color_normal: "black"
-        text_color_focus: "black"
-        theme_line_color: "Custom"
-        line_color_normal: "green"
 
         on_focus: root.select_action(self)
 
 <CustomeDropOptions>
     adaptive_height: True
-    MDTextField:
+    CustomTextField:
         id: option_input
-        text: "Ne pas répéter"
-        mode: "rectangle"
+        text: root.text
         hint_text: root.htext
-        text_color_normal: "black"
-        text_color_focus: "black"
-        theme_line_color: "Custom"
-        line_color_normal: "green"
 
         on_focus: root.select_action(self)

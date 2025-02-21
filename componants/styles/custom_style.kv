@@ -1,0 +1,18 @@
+
+<CustomTextField>
+    mode: "rectangle"
+    text_color_normal: "black"
+    text_color_focus: "black"
+    theme_line_color: "Custom"
+    line_color_normal: "green"
+
+<CustomIconVeiw>
+    mode: "rectangle"
+    size_hint: None,None 
+    size: dp(35),dp(35)
+    on_press: root.isselect()
+    
+    FitImage:
+        source: root.source
+        pos_hint: {"top": 1}
+        radius: "10dp"
